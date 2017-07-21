@@ -1,8 +1,4 @@
 const Upload = require('./upload.model');
-// import config from '../../config/config';
-const multer = require('multer');
-var DIR = './uploads/';
-var upload = multer({dest: DIR}).single('image');
 
 module.exports = {
   index(req, res) {
