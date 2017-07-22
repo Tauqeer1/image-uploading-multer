@@ -14,14 +14,17 @@ export class AppComponent {
   constructor(private http: Http, private el: ElementRef) {
   }
 
-  upload() {
+  upload(value) {
+    console.log('value', value);
     const inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#upload');
-    console.log('inputEl', inputEl.files);
     const fileCount: number = inputEl.files.length;
+    const headers: Headers = new Headers();
+    headers.append('Content-type', 'multipart/form-data');
     const formData = new FormData();
     if (fileCount > 0) {
+      formData.append('username', value['username']);
       formData.append('uploadFile', inputEl.files.item(0));
-      this.http.post('http://localhost:3000/api/upload', formData)
+      this.http.post('http://localhost:3000/api/upload', formData, headers)
         .subscribe(res => {
           console.log('res', res);
         })

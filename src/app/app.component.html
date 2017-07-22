@@ -1,6 +1,9 @@
 
-<input id="upload" type="file" />
-<button type="button" class="btn btn-success btn-s" (click)="upload()">
-  Upload
-</button>
+<form #postForm="ngForm" (submit)="upload(postForm.value)">
+  <input type="text" name="username" #username="ngModel"  placeholder="Name" ngModel>
+  <input id="upload" type="file" />
+  <button type="submit">
+    Upload
+  </button>
+</form>
 

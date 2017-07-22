@@ -5,7 +5,9 @@ module.exports = {
     res.send('api works');
   },
   create(req, res) {
+    console.log('req.body', req.body);
     let upload = {
+      name: req.body.username,
       imagePath: req.file.path
     };
     Upload.create(upload)
